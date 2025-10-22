@@ -5,16 +5,17 @@ import StudentList from "./components/StudentList";
 import axios from "axios";
 import "./App.css";
 
-// Define the API base URL using an environment variable.
-// If REACT_APP_API_URL is not set (i.e., running locally), it defaults to http://localhost:5000.
+// --- START OF CRITICAL CHANGE ---
+// 1. Define the API base URL using an environment variable.
 const API_BASE_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
+// --- END OF CRITICAL CHANGE ---
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [students, setStudents] = useState([]);
 
   const fetchStudents = async () => {
-    // 2. Use the environment variable to construct the full API URL.
+    // 2. Use the environment variable here. This will now point to your Render API.
     const res = await axios.get(`${API_BASE_URL}/api/students`);
     setStudents(res.data);
   };
