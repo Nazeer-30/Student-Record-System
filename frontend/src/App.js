@@ -5,8 +5,8 @@ import StudentList from "./components/StudentList";
 import axios from "axios";
 import "./App.css";
 
-// 1. Define the API base URL using an environment variable.
-//    If REACT_APP_API_URL is not set (i.e., running locally), it defaults to http://localhost:5000.
+// Define the API base URL using an environment variable.
+// If REACT_APP_API_URL is not set (i.e., running locally), it defaults to http://localhost:5000.
 const API_BASE_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
 
 function App() {
