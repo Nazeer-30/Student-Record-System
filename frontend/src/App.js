@@ -5,12 +5,17 @@ import StudentList from "./components/StudentList";
 import axios from "axios";
 import "./App.css";
 
+// 1. Define the API base URL using an environment variable.
+//    If REACT_APP_API_URL is not set (i.e., running locally), it defaults to http://localhost:5000.
+const API_BASE_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
+
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [students, setStudents] = useState([]);
 
   const fetchStudents = async () => {
-    const res = await axios.get("http://localhost:5000/api/students");
+    // 2. Use the environment variable to construct the full API URL.
+    const res = await axios.get(`${API_BASE_URL}/api/students`);
     setStudents(res.data);
   };
 
@@ -20,19 +25,18 @@ function App() {
 
   return (
     <div className="App">
-    <div className="App-content">
-      {!isLoggedIn ? (
-      <Login onLogin={() => setIsLoggedIn(true)} />
-      ) : (
-        <>
-          <h1 className="apph1">🎓 Student Record System</h1>
-          <StudentForm onStudentAdded={fetchStudents} />
-          <StudentList students={students} onUpdate={fetchStudents} />
-        </>
-      )}
+      <div className="App-content">
+        {!isLoggedIn ? (
+          <Login onLogin={() => setIsLoggedIn(true)} />
+        ) : (
+          <>
+            <h1 className="apph1">🎓 Student Record System</h1>
+            <StudentForm onStudentAdded={fetchStudents} />
+            <StudentList students={students} onUpdate={fetchStudents} />
+          </>
+        )}
+      </div>
     </div>
-  </div>
-
   );
 }
 
