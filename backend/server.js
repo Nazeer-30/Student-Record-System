@@ -9,7 +9,6 @@ const app = express();
 connectDB();
 
 // Allow requests from all origins (important for development and separation of services)
-// For better security, you might want to replace '*' with your deployed frontend URL later.
 app.use(cors()); 
 app.use(express.json());
 
