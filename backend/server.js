@@ -6,25 +6,11 @@ import adminRoutes from "./routes/adminRoutes.js";
 
 const app = express();
 
-// --- CRITICAL STEP: CORS CONFIGURATION ---
-// Get the URL of your deployed Frontend Static Site from Render (e.g., https://student-record-app.onrender.com)
-// If you don't know it, keep it as '*' temporarily, but using the specific URL is best practice.
-const allowedOrigins = [
-    // Replace the URL below with YOUR actual deployed frontend URL (e.g., https://your-app-name.onrender.com)
-    process.env.FRONTEND_URL || 'https://student-record-app.onrender.com', 
-    'http://localhost:3000' // For local testing
-];
-
+// --- CRITICAL STEP: CORS CONFIGURATION (Temporary Universal Fix) ---
+// We are setting origin: '*' temporarily to confirm the connection works. 
+// This ensures the deployed frontend (on Render) can talk to the deployed backend (on Render).
 app.use(cors({
-    origin: (origin, callback) => {
-        // Allow requests with no origin (like mobile apps or curl requests)
-        if (!origin) return callback(null, true); 
-        if (allowedOrigins.indexOf(origin) === -1) {
-            const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
-            return callback(new Error(msg), false);
-        }
-        return callback(null, true);
-    },
+    origin: '*', // Allows requests from ANY origin.
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     credentials: true,
 }));
@@ -34,9 +20,11 @@ connectDB();
 
 app.use(express.json());
 
+// API routes
 app.use("/api/students", studentRoutes);
 app.use("/api/admin", adminRoutes); 
 
+// Use Render's dynamic port (process.env.PORT)
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
