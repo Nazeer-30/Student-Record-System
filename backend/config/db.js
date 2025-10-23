@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 const connectDB = async () => {
   try {
     // CRITICAL FIX: Use the environment variable set on Render
-    const mongoURI = process.env.MONGODB_URI;
+    const mongoURI = process.env.MONGODB_URL;
 
     if (!mongoURI) {
       // Log an error if the environment variable is missing
@@ -25,3 +25,4 @@ const connectDB = async () => {
 };
 
 export default connectDB;
+
