@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-const API_BASE_URL = process.env.REACT_APP_API_URL;
+const API_BASE_URL = "https://student-record-api-rx8u.onrender.com";
 // ---------------------------------------------------
 
 function StudentForm({ onStudentAdded }) {
@@ -66,4 +66,5 @@ function StudentForm({ onStudentAdded }) {
 }
 
 export default StudentForm;
+
 
