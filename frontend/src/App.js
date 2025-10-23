@@ -7,7 +7,7 @@ import "./App.css";
 
 // --- START OF CRITICAL CHANGE ---
 // 1. Define the API base URL using an environment variable.
-const API_BASE_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
+const API_BASE_URL = process.env.REACT_APP_API_URL;
 // --- END OF CRITICAL CHANGE ---
 
 function App() {
