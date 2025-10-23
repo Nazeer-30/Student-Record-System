@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-// --- CRITICAL CHANGE 1: Define the API base URL ---
 // This variable will use the URL you set in the Render environment variables.
-const API_BASE_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
+const API_BASE_URL = process.env.REACT_APP_API_URL;
 // ---------------------------------------------------
 
 function Login({ onLogin }) {
@@ -98,3 +97,4 @@ function Login({ onLogin }) {
 }
 
 export default Login;
+
