@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 
 // This variable will use the URL you set in the Render environment variables.
-const API_BASE_URL = process.env.REACT_APP_API_URL;
+const API_BASE_URL = "https://student-record-api-rx8u.onrender.com";
 // ---------------------------------------------------
 
 function Login({ onLogin }) {
@@ -97,4 +97,5 @@ function Login({ onLogin }) {
 }
 
 export default Login;
+
 
